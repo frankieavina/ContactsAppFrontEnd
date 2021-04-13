@@ -1,0 +1,28 @@
+<div *ngIf="contact" style=" margin: 20px;" >
+
+  <h4><span class="nEP">{{contact.name | uppercase}} DETAILS</span></h4>
+  <br>
+  <div> <span class='nEP'>Name:</span> {{contact.name}} <span class='nEP'>Email:</span>{{contact.email}} <span class='nEP'>Phone:</span>{{contact.phone}}</div>
+  <br>
+  <form>
+    <div>
+      <label style="margin: 10px;">Contact name: </label>
+      <input [(ngModel)]="contact.name" placeholder="name" name="name" #nameContact>
+    </div>
+    <div>
+      <label style="margin: 10px;" >Contact email: </label>
+      <input [(ngModel)]="contact.email" placeholder="email" name="email" #nameEmail>
+    </div>
+    <div>
+      <label style="margin: 10px;">Contact phone: </label>
+      <input [(ngModel)]="contact.phone" placeholder="phone" name="phone" #numberPhone>
+    </div>
+  </form>
+  <br>
+  <div>
+    <button class="btn btn-danger" style="margin: 10px;" type="button" (click)="onDeleteContact(nameContact)">Delete</button>
+    <button class="btn btn-success" type="button" style="margin: 10px; " (click)="onSaveContact(nameContact, nameEmail, numberPhone)">Save</button>
+    <button class="btn btn-warning" style="margin: 10px;" type="button" (click)="onCancelContact()">Cancel</button>
+  </div>
+
+</div>

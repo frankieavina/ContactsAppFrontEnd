@@ -1,0 +1,64 @@
+
+<div style=" margin: 20px; ">
+    <h3>CONTACTS</h3>
+</div>
+
+
+<hr>
+
+<ul class="contacts" style=" margin: 20px;" >
+  <!-- adding some CSS class conditionally to the element being selected -->
+  <li *ngFor="let contact of contacts"
+      [class.selected] = "contact === selectedContact"
+      (click)="onSelect(contact)" >
+      <span style="font-weight: bolder">{{contact.name | uppercase}}</span>
+      <!--<span class="infoCon">Name:{{contact.name}}  Email:{{contact.email}}
+      Phone:{{contact.phone}}</span>-->
+  </li>
+</ul>
+
+<div class="row">
+  <div class="col-xs-12" style=" margin: 20px;" >
+    <form>
+<!---------------------------   New contact input info  ----------------------------->
+      <div class="row">
+        <div class="col-sm-2 form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            #nameInput>
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="email">Email:</label>
+          <input
+            type="text"
+            id="email"
+            class="form-control"
+            #emailInput>
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="phone">Phone:</label>
+          <input
+            type="number"
+            id="phone"
+            class="form-control"
+            #phoneInput>
+        </div>
+      </div>
+<!------------      event listens to click to create new contact ------------------->
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-primary" type="submit" (click)="onAddContact(nameInput,emailInput,phoneInput)">Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!------------------------------- Contact Information ---------------------------------->
+<hr>
+<app-contact-card [contact]="selectedContact"></app-contact-card>
+
